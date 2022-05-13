@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <div class="h-96"></div>
-        <div class="h-96"></div>
+        <div class="h-96">Scrol down ...</div>
     </div>
 
     <h2 class="text-lg font-semibold">Standard Contact Form</h2>
@@ -94,5 +94,13 @@
 
     <div class="h-96"></div>
     <div class="h-96"></div>
-    
+    <hr>
+
+    <div class="my-8">
+        <h2 class="text-lg font-semibold mt-4">Livewire Data Tables</h2>
+
+        <livewire:data-tables />
+    </div>
+
+
 @endsection

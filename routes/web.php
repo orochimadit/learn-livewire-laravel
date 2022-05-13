@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMailable;
 use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', function () {
-    return view('examples');
+    return view('examples',[
+        'users'=> User::paginate(10)
+    ]);
 });
 
 Route::post('/contact',function(Request $request){
