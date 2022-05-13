@@ -26,21 +26,23 @@ class ContactFormTest extends TestCase
 
     /** @test */
     public function contact_form_sends_out_an_email(){
-        
+  
         Mail::fake();
-        Livewire::test(ContactForm::class)
-            ->set('name','Aditya Pratama Badra')
-            ->set('email','adityapratamabadra@gmail.com')
-            ->set('phone','02378247384')
-            ->set('message','This is my Message.')
+
+
+         Livewire::test(ContactForm::class)
+            ->set('name', 'Andre')
+            ->set('email', 'someguy@someguy.com')
+            ->set('phone', '12345')
+            ->set('message', 'This is my message.')
             ->call('submitForm')
-            ->assertSee('We received your message successfully and will get back to you shortyly!');
-        
+            ->assertSee('We received your message successfully and will get back to you shortly!');
+            
         Mail::assertSent(function (ContactFormMailable $mail){
             $mail->build();
 
-            return $mail->hasTo('adityapratamabadra@gmail.com')&&
-                    $mail->hasFrom('entahsiapa@mail.com')&&
+            return $mail->hasTo('adityapratamabadra@gmail.com') &&
+                    $mail->hasFrom('entahsiapa@mail.com') &&
                     $mail->subject === 'Contact Form Submission';
         });
 
